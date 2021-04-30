@@ -31,7 +31,7 @@ actions: <Widget>[
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0),
+          padding: EdgeInsets.symmetric(vertical: 100.0,horizontal: 50.0),
           child: Form(
               key:_formKey,
               child:Column(

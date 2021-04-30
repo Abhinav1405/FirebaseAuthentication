@@ -7,6 +7,6 @@ enabledBorder:OutlineInputBorder(
 borderSide: BorderSide(color:Colors.white,width: 2.0)
 ),
 focusedBorder:OutlineInputBorder(
-borderSide: BorderSide(color:Colors.red,width: 5.0)
+borderSide: BorderSide(color:Colors.black,width: 3.0)
 ),
 );
