@@ -29,62 +29,64 @@ actions: <Widget>[
  }, icon: Icon(Icons.person), label: Text('Sign in'))
 ],
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0),
-        child: Form(
-            key:_formKey,
-            child:Column(
-          children: <Widget>[
-            SizedBox(height: 20.0,),
-            TextFormField(
-              decoration: textInputDecoration.copyWith(hintText: 'Email'),
-              validator: (val)=>val.isEmpty? 'Enter an email':null,
-              onChanged: (val){
-                setState(() {
-                  email=val;
-                });
-              },
-            ),
-            SizedBox(height: 20.0,),
-            TextFormField(
-              decoration:textInputDecoration,
-              obscureText: true,
-              validator: (val)=>val.length<8? 'Enter a strong password 8+char': null,
-
-              onChanged: (val){
-
-                setState(() {
-                  password=val;
-                });
-              },
-            ),
-            SizedBox(height: 20.0,),
-            RaisedButton(
-              color: Colors.pink[400],
-              child: Text(
-                'REgister',
-
-              ),
-              onPressed: ()async{
-                if(_formKey.currentState.validate()){
-                dynamic result=await _auth.registerwithEmailandPAssword(email, password);
-                if(result==null){
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0),
+          child: Form(
+              key:_formKey,
+              child:Column(
+            children: <Widget>[
+              SizedBox(height: 20.0,),
+              TextFormField(
+                decoration: textInputDecoration.copyWith(hintText: 'Email'),
+                validator: (val)=>val.isEmpty? 'Enter an email':null,
+                onChanged: (val){
                   setState(() {
-                    error="please supply a valid email";
+                    email=val;
                   });
-                }
-                }
-              },
-            ),
-            SizedBox(height: 12.0,)
-            ,
-            Text(
-              error,
-              style:TextStyle(color: Colors.red,fontSize: 14.0),
-            ),
+                },
+              ),
+              SizedBox(height: 20.0,),
+              TextFormField(
+                decoration:textInputDecoration,
+                obscureText: true,
+                validator: (val)=>val.length<8? 'Enter a strong password 8+char': null,
 
-          ],
-        )),
+                onChanged: (val){
+
+                  setState(() {
+                    password=val;
+                  });
+                },
+              ),
+              SizedBox(height: 20.0,),
+              RaisedButton(
+                color: Colors.pink[400],
+                child: Text(
+                  'REgister',
+
+                ),
+                onPressed: ()async{
+                  if(_formKey.currentState.validate()){
+                  dynamic result=await _auth.registerwithEmailandPAssword(email, password);
+                  if(result==null){
+                    setState(() {
+                      error="please supply a valid email";
+                    });
+                  }
+                  }
+                },
+              ),
+              SizedBox(height: 12.0,)
+              ,
+              Text(
+                error,
+                style:TextStyle(color: Colors.red,fontSize: 14.0),
+              ),
+
+            ],
+          )),
+        ),
       ),
     );
   }
