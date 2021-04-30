@@ -18,24 +18,42 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        backgroundColor:Colors.blue[800],
+        backgroundColor:Colors.pinkAccent[200],
         elevation: 0.0,
-        title: Text("REGISTER"),
+        title: Text("Register",
+        style: TextStyle(
+          color: Colors.white,
+        ),),
 actions: <Widget>[
  FlatButton.icon(onPressed: (){
    widget.toggleView();
- }, icon: Icon(Icons.person), label: Text('Sign in'))
+ }, icon: Icon(Icons.person,color: Colors.white,), label: Text('Sign in',
+ style: TextStyle(
+   color: Colors.white,
+ ),
+ )
+ )
 ],
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 100.0,horizontal: 50.0),
+          padding: EdgeInsets.symmetric(vertical: 20.0,horizontal: 50.0),
           child: Form(
               key:_formKey,
               child:Column(
             children: <Widget>[
+              Center(
+                child: CircleAvatar(
+
+                  backgroundImage: AssetImage('assets/Music Icon.png',
+
+                  ),
+
+                  radius: 60.0,
+                ),
+              ),
               SizedBox(height: 20.0,),
               TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: 'Email'),
@@ -63,8 +81,11 @@ actions: <Widget>[
               RaisedButton(
                 color: Colors.pink[400],
                 child: Text(
-                  'REgister',
-
+                  'Register',
+ style: TextStyle(
+   color: Colors.white,
+   fontWeight: FontWeight.bold,
+ ),
                 ),
                 onPressed: ()async{
                   if(_formKey.currentState.validate()){
